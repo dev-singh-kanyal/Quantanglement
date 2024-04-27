@@ -4,3 +4,5 @@ A chatbot using Large Language Models (LLMs) to answer quantum queries and provi
 ## Contributors
 - Dev Singh Kanyal
 - Priya Sinha
+- Sherine Horo
+- Shimon Shiromani
