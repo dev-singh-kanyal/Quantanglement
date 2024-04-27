@@ -1,3 +1,8 @@
+# AES Encryption Function
+
+Here is the function `AESencrypt` which takes in plaintext and a key as inputs:
+
+```javascript
 function AESencrypt(plaintext, key) {
     blocks := divideIntoBlocks(plaintext);
     // The plaintext is divided into blocks of 128 bits each
