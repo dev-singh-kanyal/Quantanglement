@@ -1,3 +1,8 @@
+# key, message and chat directory
+qcrypto/client/key
+qcrypto/client/message
+qcrypto/server/chat
+
 # Logs
 logs/
 *.log
