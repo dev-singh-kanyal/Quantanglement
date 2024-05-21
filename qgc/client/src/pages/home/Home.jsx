@@ -77,8 +77,8 @@ const Header = () => {
     }}>
       <h1 style={{
         fontSize: '20px',
-      }}>Quantanglement</h1>
-      <button style={{
+      }}>Chat With All</h1>
+      {/* <button style={{
         position: 'absolute',
         top: '15px',
         right: '15px',
@@ -87,7 +87,7 @@ const Header = () => {
         border: 'none',
         padding: '5px 10px',
         cursor: 'pointer'
-      }}>Exit</button>
+      }}>Exit</button> */}
     </header>
   )
 }

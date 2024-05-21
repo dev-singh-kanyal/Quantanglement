@@ -32,13 +32,13 @@ const LeftBar = () => {
         <hr />
         <div className="menu">
           <span>Your Groups</span>
-          <div className="item" onClick={() => { window.location.href = 'http://localhost:8000'; }}>
-            <span>Quantum Cryptography</span>
+          <div className="item" onClick={() => { window.location.href = 'http://localhost:8001'; }}>
+            <span>Quantum</span>
           </div>
-          <div className="item">
-            <span>AI/ML</span>
+          <div className="item" onClick={() => { window.location.href = 'http://localhost:8002'; }}>
+            <span>AI</span>
           </div>
-          <div className="item">
+          <div className="item" onClick={() => { window.location.href = 'http://localhost:8003'; }}>
             <span>IOT</span>
           </div>
         </div>
