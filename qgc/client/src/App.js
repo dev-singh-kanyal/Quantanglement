@@ -1,17 +1,22 @@
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
+
 import {
   createBrowserRouter,
   RouterProvider,
   Outlet,
   Navigate,
 } from "react-router-dom";
+
 import Navbar from "./components/navbar/Navbar";
 import LeftBar from "./components/leftBar/LeftBar";
 import RightBar from "./components/rightBar/RightBar";
+
 import Home from "./pages/home/Home";
-import Profile from "./pages/profile/Profile";
+// TODO: Profile Page 
+// import Profile from "./pages/profile/Profile";
 import "./style.scss";
+
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/authContext";
@@ -19,11 +24,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
-
   const { darkMode } = useContext(DarkModeContext);
-
   const queryClient = new QueryClient();
-
   const Layout = () => {
     return (
       <QueryClientProvider client={queryClient}>
@@ -45,7 +47,6 @@ function App() {
     if (!currentUser) {
       return <Navigate to="/login" />;
     }
-
     return children;
   };
 
@@ -61,11 +62,15 @@ function App() {
         {
           path: "/",
           element: <Home />,
+          // children: {
+          //   element: <h1>Hello test</h1>
+          // }
         },
-        {
-          path: "/profile/:id",
-          element: <Profile />,
-        },
+        // TODO: Profile Page 
+        // {
+        //   path: "/profile/:id",
+        //   element: <Profile />,
+        // },
       ],
     },
     {

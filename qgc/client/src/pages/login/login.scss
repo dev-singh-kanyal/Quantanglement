@@ -1,12 +1,10 @@
 .login {
   height: 100vh;
-  background-color: rgb(255, 243, 190);
-  // background-color: rgb(190, 255, 201);
-  // background-color: rgb(190, 229, 255);
+  background-color: rgb(240, 230, 220);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 1rem;
 
   .card {
     width: 70%;
@@ -19,7 +17,7 @@
     .left,
     .right {
       flex: 1;
-      padding: 2em;
+      padding: 2.5em;
       display: flex;
       flex-direction: column;
       gap: 1em;
@@ -27,9 +25,7 @@
 
     .left {
       background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.5)),
-        url("./team1.jpg") right;
-      // url("./team2.jpg") center;
-      // url("./team3.jpg") center;
+        url("./team2.jpg") center;
       background-size: cover;
       color: white;
 
@@ -43,6 +39,7 @@
 
       span {
         font-size: 0.75em;
+        margin-bottom: 0em;
       }
 
       button {
@@ -53,6 +50,7 @@
         color: rebeccapurple;
         font-weight: bold;
         cursor: pointer;
+        margin-top: 0;
       }
     }
 
@@ -88,7 +86,7 @@
     }
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 850px) {
     .card {
       width: 90%;
       flex-direction: column;

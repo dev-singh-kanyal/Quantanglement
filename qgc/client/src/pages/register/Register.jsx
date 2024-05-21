@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import "./register.scss";
 import axios from "axios";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "./register.scss";
 
 const Register = () => {
   const [inputs, setInputs] = useState({
@@ -11,6 +11,7 @@ const Register = () => {
     name: "",
   });
   const [err, setErr] = useState(null);
+  const navigate = useNavigate(); // Initialize the useNavigate hook
 
   const handleChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -18,15 +19,15 @@ const Register = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-
     try {
       await axios.post("http://localhost:8800/api/auth/register", inputs);
+      navigate("/login");
     } catch (err) {
       setErr(err.response.data);
     }
   };
 
-  console.log(err)
+  console.log(err);
 
   return (
     <div className="register">
@@ -68,7 +69,7 @@ const Register = () => {
               name="name"
               onChange={handleChange}
             />
-            {err && err}
+            {err && <span className="error">{err}</span>}
             <button onClick={handleClick}>Register</button>
           </form>
         </div>

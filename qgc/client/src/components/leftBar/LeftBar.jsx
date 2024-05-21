@@ -1,19 +1,16 @@
 import "./leftBar.scss";
-import Peers from "../../assets/peers.png";
 import { AuthContext } from "../../context/authContext";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
-import { makeRequest } from "../../axios";
 
 const LeftBar = () => {
-  const { currentUser, login } = useContext(AuthContext);
-
-  const handleLogout = async () => {
+  const { currentUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const handleLogout = () => {
     try {
-      await makeRequest.post("auth/logout");
-      // Clear user data from local storage and update context
       localStorage.removeItem("user");
-      login(null);
+      navigate("/login");
     } catch (error) {
       console.error("Logout failed:", error);
     }
@@ -25,22 +22,17 @@ const LeftBar = () => {
         <div className="menu">
           <div className="user">
             <img
-              // src={"/upload/" + currentUser.profilePic}
-              src={"https://avatars.githubusercontent.com/u/77870205?v=4" + currentUser.profilePic}
+              src={"/upload/" + currentUser.name + ".png"}
+              // src={"link" + currentUser.profilePic}
               alt=""
             />
             <span>{currentUser.name}</span>
-          </div>
-          <div className="user">
-            <img src={Peers} alt="" />
-            <span>Peers</span>
           </div>
         </div>
         <hr />
         <div className="menu">
           <span>Your Groups</span>
-          <div className="item">
-            {/* <img src={Group1} alt="" /> */}
+          <div className="item" onClick={() => { window.location.href = 'http://localhost:8000'; }}>
             <span>Quantum Cryptography</span>
           </div>
           <div className="item">

@@ -9,14 +9,11 @@ const Login = () => {
     password: "",
   });
   const [err, setErr] = useState(null);
-
   const navigate = useNavigate();
-
   const handleChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
   const { login } = useContext(AuthContext);
-
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -32,7 +29,7 @@ const Login = () => {
       <div className="card">
         <div className="left">
           <h1>Welcome To Qunatanglement.</h1>
-          <p>An environment to learn and grow together.</p>
+          <p>A platform  to learn and grow together.</p>
           <span>Don't you have an account?</span>
           <Link to="/register">
             <button>Register Now</button>
