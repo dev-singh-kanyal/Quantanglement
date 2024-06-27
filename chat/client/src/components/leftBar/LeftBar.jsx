@@ -41,6 +41,9 @@ const LeftBar = () => {
           <div className="item" onClick={() => { window.location.href = 'http://localhost:8003'; }}>
             <span>IOT</span>
           </div>
+        <div className="item" onClick={() => { window.location.href = 'http://localhost:8501'; }}>
+            <span><b>BOT</b></span>
+        </div>
         </div>
         <div className="logout-container">
           <button className="logout-button" onClick={handleLogout}>

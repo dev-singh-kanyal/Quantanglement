@@ -1,9 +1,7 @@
-// Code this area for the Chat Interface
-
-import { useContext, useEffect, useState } from "react"
-import "./home.scss"
-import { AuthContext } from "../../context/authContext"
-import { SocketContext } from '../../context/socket'
+import { useContext, useEffect, useState, useRef } from "react";
+import "./home.scss";
+import { AuthContext } from "../../context/authContext";
+import { SocketContext } from '../../context/socket';
 
 const Message = ({ uname, message, mine = false, type = 'msg' }) => {
   return type === 'update' ? (
@@ -78,23 +76,13 @@ const Header = () => {
       <h1 style={{
         fontSize: '20px',
       }}>Chat With All</h1>
-      {/* <button style={{
-        position: 'absolute',
-        top: '15px',
-        right: '15px',
-        backgroundColor: '#d9534f',
-        color: 'white',
-        border: 'none',
-        padding: '5px 10px',
-        cursor: 'pointer'
-      }}>Exit</button> */}
     </header>
   )
 }
 
 const Messages = ({ children }) => {
   return (
-    <div style={{
+    <div className="mess" style={{
       padding: '20px',
       height: '60vh',
       overflowY: 'auto',
@@ -105,17 +93,16 @@ const Messages = ({ children }) => {
   )
 }
 
-
 const Chat = () => {
-  const { currentUser } = useContext(AuthContext)
-  const socket = useContext(SocketContext)
-  const [msgText, setMsgText] = useState('')
+  const messagesEndRef = useRef(null);
+  const { currentUser } = useContext(AuthContext);
+  const socket = useContext(SocketContext);
+  const [msgText, setMsgText] = useState('');
+  const [msgs, setMsgs] = useState([]);
 
-  const [msgs, setMsgs] = useState([])
-
-  const handleMsgTextChange = (e) => {
-    setMsgText(e.target.value);
-  }
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const handleMsgSubmit = () => {
     if (!msgText) return;
@@ -126,30 +113,31 @@ const Chat = () => {
     setMsgText('');
   }
 
+  useEffect(scrollToBottom, [msgs]);
+
+  const handleMsgTextChange = (e) => {
+    setMsgText(e.target.value);
+  }
+
   const handleUpdate = (update) => {
-    console.log('new update', update)
     setMsgs(prev => ([
       ...prev, { message: update, type: 'update' }
     ]))
   }
 
   const handleChat = (chat) => {
-    console.log('new chat', chat)
     setMsgs(prev => ([...prev, { ...chat, type: 'msg' }]))
   }
 
   useEffect(() => {
-    socket.emit("newuser", currentUser.name)
-    console.log('new user')
-
-    socket.on("update", handleUpdate)
-    socket.on("chat", handleChat)
+    socket.emit("newuser", currentUser.name);
+    socket.on("update", handleUpdate);
+    socket.on("chat", handleChat);
 
     return () => {
-      // handle unsubscribe
       socket.emit("exituser", currentUser.name);
     }
-  }, [])
+  }, []);
 
   return (
     <div className="home">
@@ -158,10 +146,11 @@ const Chat = () => {
         {msgs.map(({ uname, message, type }, i) => (
           <Message message={message} uname={uname} type={type} mine={uname === currentUser.name} key={i} />
         ))}
+        <div ref={messagesEndRef} />
       </Messages>
       <MessageInput onChange={handleMsgTextChange} value={msgText} onSubmit={handleMsgSubmit} />
     </div>
-  )
+  );
 }
 
 const Home = () => {
@@ -170,4 +159,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Home;

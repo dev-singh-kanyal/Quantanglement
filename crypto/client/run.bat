@@ -2,6 +2,7 @@
 echo Changing directory...
 cd /d "%~dp0"
 :: This will change the directory to the one where batch file is located
+
 echo Running key.py script...
 powershell -Command "python ./key.py"
 pause
