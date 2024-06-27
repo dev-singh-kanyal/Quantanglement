@@ -1,0 +1,24 @@
+{
+  "name": "chat-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server1": "cd ./ && node server.js",
+    "server2": "cd ./Q && node server.js",
+    "server3": "cd ./QA && node server.js",
+    "server4": "cd ./QI && node server.js",
+    "start": "concurrently \"npm run server1\" \"npm run server2\" \"npm run server3\" \"npm run server4\""
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "socket.io": "^4.7.5"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

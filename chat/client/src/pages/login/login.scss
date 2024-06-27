@@ -1,0 +1,112 @@
+.login {
+  height: 100vh;
+  background-color: rgb(240, 230, 220);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+
+  .card {
+    width: 70%;
+    display: flex;
+    background-color: white;
+    border-radius: 10px;
+    min-height: 60vh;
+    overflow: hidden;
+
+    .left,
+    .right {
+      flex: 1;
+      padding: 2.5em;
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
+
+    .left {
+      background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.5)),
+        url("./team2.jpg") center;
+      background-size: cover;
+      color: white;
+
+      h1 {
+        font-size: 2em;
+      }
+
+      p {
+        font-size: 1em;
+      }
+
+      span {
+        font-size: 0.75em;
+        margin-bottom: 0em;
+      }
+
+      button {
+        width: 50%;
+        padding: 1em;
+        border: none;
+        background-color: white;
+        color: rebeccapurple;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 0;
+      }
+    }
+
+    .right {
+      justify-content: center;
+
+      h1 {
+        color: #555;
+        font-size: 2.5em;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5em;
+
+        input {
+          border: none;
+          border-bottom: 1px solid lightgray;
+          padding: 1em 0.625em;
+        }
+
+        button {
+          width: 50%;
+          padding: 1em;
+          border: none;
+          background-color: #938eef;
+          color: white;
+          font-weight: bold;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 850px) {
+    .card {
+      width: 90%;
+      flex-direction: column;
+
+      .left,
+      .right {
+        width: 90%;
+
+        h1 {
+          font-size: 1.5em;
+        }
+
+        p {
+          font-size: 0.875em;
+        }
+
+        span {
+          font-size: 0.625em;
+        }
+      }
+    }
+  }
+}
